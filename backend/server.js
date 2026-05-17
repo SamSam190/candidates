@@ -11,6 +11,11 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/candidate-shortlisting';
 
+// Basic Health Check Route
+app.get('/', (req, res) => {
+  res.send('Candidate Shortlisting API is running!');
+});
+
 // Connect to DB
 mongoose.connect(MONGO_URI)
   .then(() => console.log('MongoDB connected'))
