@@ -27,7 +27,7 @@ This is a Full-Stack MERN (MongoDB, Express, React, Node.js) application that ra
    ```bash
    npm run dev
    ```
-3. Open your browser and navigate to the URL provided by Vite (usually `http://localhost:5173`).
+3. LIVE: https://candidates-1.onrender.com/
 
 ## Features
 - Add candidate details (Name, Email, Skills, Experience, Bio)
