@@ -107,9 +107,7 @@ ${candidatesText}
 Rank candidates based on the job requirements and explain why. Be concise. Provide the output in a clear format.
     `;
 
-    // Fetch from OpenRouter API
-    const fetch = (await import('node-fetch')).default || global.fetch; // Node 18+ has global fetch
-    
+    // Fetch from OpenRouter API using native fetch (Node 18+)
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -126,9 +124,11 @@ Rank candidates based on the job requirements and explain why. Be concise. Provi
     if (data.choices && data.choices.length > 0) {
       res.json({ aiRecommendation: data.choices[0].message.content });
     } else {
+      console.error('OpenRouter API Error:', data);
       res.status(500).json({ error: 'Failed to get response from AI', details: data });
     }
   } catch (error) {
+    console.error('AI Shortlist Error:', error);
     res.status(500).json({ error: error.message });
   }
 });
